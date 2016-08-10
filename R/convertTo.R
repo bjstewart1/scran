@@ -16,6 +16,8 @@ setMethod("convertTo", "SCESet", function(x, type=c("edgeR", "DESeq2", "monocle"
     }
     if (missing(assay)) { assay <- "counts" }
 
+    get.spikes <- get.spikes | is.null(isSpike(x)) # Getting everything if no spikes present.
+
     if (type=="edgeR") {
         y <- DGEList(assayDataElement(x, assay), ...)
         if (ncol(fd)) { y$genes <- fd }

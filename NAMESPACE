@@ -1,0 +1,37 @@
+useDynLib(scran, .registration=TRUE, .fixes="cxx_")
+
+export(
+    DM, testVar,
+    correlateNull,
+    selectorPlot
+)
+
+exportMethods(
+    computeSumFactors, quickCluster, computeSpikeFactors, normalize,
+    trendVar, decomposeVar, technicalCV2, 
+    sandbag, cyclone,
+    correlatePairs,
+    spikes, isSpike, "isSpike<-",
+    convertTo
+)
+
+importFrom("dynamicTreeCut", cutreeDynamic)
+importFrom("Matrix", sparseMatrix, qr, qr.coef, qr.qty)
+importFrom("zoo", zoo, rollapply, index)
+
+importFrom("edgeR", DGEList, "[.DGEList", designAsFactor)
+importFrom("statmod", glmgam.fit)
+
+importFrom("BiocGenerics", normalize)
+importFrom("Biobase", assayDataElement, "assayDataElement<-", fData, exprs, featureData, phenoData, pData)
+
+importFrom("utils", combn)
+importFrom("stats", approx, as.dist, cor, fitted, hclust, loess, median, p.adjust, pchisq, predict, quantile, coefficients, nls, nls.control)
+importFrom("grDevices", grey.colors)
+importFrom("graphics", text)
+
+importFrom("shiny", actionButton, brushOpts, brushedPoints, column, fluidPage, fluidRow, observeEvent, plotOutput, renderPlot, shinyApp, stopApp)
+
+import(BiocParallel)
+import(scater)
+import(methods)

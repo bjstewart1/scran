@@ -206,7 +206,7 @@ setMethod("correlatePairs", "SCESet", function(x, subset.row=NULL, use.names=TRU
     by.spikes <- FALSE
     if (is.null(subset.row)) {
         subset.row <- .spikeSubset(x, get.spikes)
-        by.spikes <- TRUE
+        by.spikes <- !is.null(subset.row)
     }
     out <- .correlate_pairs(assayDataElement(x, assay), subset.row=subset.row, per.gene=per.gene, use.names=use.names, ...)
 
